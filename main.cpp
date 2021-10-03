@@ -15,7 +15,7 @@ int main()
 		std::cerr << "Can't initialize WinSock! Error: " << ret << '\n';
 		return 0;
 	}
-
+	
 	// Create a socket
 	SOCKET listening{ socket(AF_INET, SOCK_STREAM, 0) };
 	if (listening == INVALID_SOCKET)
@@ -26,9 +26,11 @@ int main()
 	}
 
 	// Bind the ip address and port to a socket
+	int port{ 54000 };
+
 	sockaddr_in hint{};
 	hint.sin_family = AF_INET;
-	hint.sin_port = htons(54000);	// host to network short
+	hint.sin_port = htons(port);			// host to network short
 	hint.sin_addr.S_un.S_addr = INADDR_ANY;	// Could also use inet_pton ...
 
 	ret = bind(listening, (sockaddr*)&hint, sizeof(hint));
@@ -63,8 +65,8 @@ int main()
 		return 0;
 	}
 
-	char host[NI_MAXHOST]{};		// Client's remote name
-	char service[NI_MAXSERV]{};		// Service (i. e. port) the client is connected on
+	char host[NI_MAXHOST]{};				// Client's remote name
+	char service[NI_MAXSERV]{};				// Service (i. e. port) the client is connected on
 
 	ret = getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0);
 	if (ret != 0)
