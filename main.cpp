@@ -93,12 +93,13 @@ int main()
 			break;
 		}
 
-		// Client disconnects
 		if (bytesReceived == 0)
 		{
 			std::cout << host << " disconnected\n";
 			break;
 		}
+
+		std::cout << host << "> " << std::string(buf, 0, bytesReceived) << '\n';
 
 		// Echo message back to client
 		ret = send(clientSocket, buf, bytesReceived, 0);
