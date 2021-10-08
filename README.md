@@ -1,6 +1,6 @@
 # tcp-server
 
-A very basic TCP echo server that accepts a single clien, implemented using Windows Sockets 2.
+A very basic TCP echo server that accepts a single client, implemented using Windows Sockets 2.
 
 ## How to use:
 0. If you don't have PuTTY or similar software, you can download PuTTY from [here](https://www.chiark.greenend.org.uk/~sgtatham/putty/), or use my TCP client [here](https://github.com/molnar-david/tcp-client)
